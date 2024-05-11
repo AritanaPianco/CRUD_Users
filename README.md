@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## CRUD Sistemas de Usuários
 
-First, run the development server:
+Primeiro, instale as dependências:
+
+```bash
+npm install
+
+```
+Depois, rode o programa com o comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
+ o programa é executado na porta 3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+As modificações ocorrem em `app/page.tsx`. A pagina atualiza ao fazer modificações no arquivo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tecnologias utilizadas
 
-## Learn More
+- Nextjs
+- Typescript
+- Tailwind
+- axios
+- react
+- react-hook-form
+- mysql
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Endpoints da Api
 
-## Deploy on Vercel
+### GET / api/users
+Esse endpoint é responsável por listar todas os usuarios
+#### Parametros
+Nenhum
+#### Respostas
+##### Status: 200
+Caso essa resposta aconteca voçe  recebera a listagem de todas os usuarios
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### POST / api/users
+Esse endpoint é responsável por cadastrar um novo usuário
+#### Parametros
+- name
+- email
+- password
+- profissao
+#### Respostas
+##### Status: 200
+Caso essa resposta aconteca, o usuario foi cadastrado
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### PUT / api/users?id=2
+Esse endpoint é responsável por atualizar um usuário
+#### Parametros
+- id
+- name
+- email
+- password
+- profissao
+#### Respostas
+##### Status: 200
+Caso essa resposta aconteca, o usuario foi atualizado
+
+### DELETE / api/users?id=2
+Esse endpoint é responsável por deletar um usuário
+#### Parametros
+- id
+#### Respostas
+##### Status: 200
+Caso essa resposta aconteca, o usuario foi deletado
+
