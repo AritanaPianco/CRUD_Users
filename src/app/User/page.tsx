@@ -31,20 +31,21 @@ export default function UserCreate(){
         })
 
         navigate.refresh();
-        navigate.replace('/');
+        navigate.replace('/', { scroll: true });
+    
     }
 
 
     return(
-        <div className="w-full flex flex-col items-center justify-center mt-40">
+        <div className="w-full flex flex-col items-center justify-center mt-40 p-5">
                
-               <form  onSubmit={handleSubmit(handleCreate)} className="w-full max-w-2xl flex flex-col gap-4 bg-gray-600 py-5 px-10">
+               <form  onSubmit={handleSubmit(handleCreate)} className="w-full max-w-3xl flex flex-col gap-4 bg-blue-950 py-8 px-10 rounded-md">
 
                      <input 
                         type="text" 
                         placeholder="Nome"
                         {...register("name")} 
-                        className="p-3"
+                        className="p-3 outline-0 rounded-sm"
                      /> 
                     <span className="text-red-700 font-bold">{errors.name?.message}</span>                     
                      
@@ -52,7 +53,7 @@ export default function UserCreate(){
                         type="email" 
                         placeholder="Email" 
                         {...register("email")}
-                        className="p-3"
+                        className="p-3 outline-0 rounded-sm"
                        />  
                      <span className="text-red-700 font-bold">{errors.email?.message}</span>                      
                      
@@ -60,7 +61,7 @@ export default function UserCreate(){
                         type="text"  
                         placeholder="Profissao"
                         {...register("profissao")}
-                        className="p-3" 
+                        className="p-3 outline-0 rounded-sm" 
                        />                      
                      <span className="text-red-700 font-bold">{errors.profissao?.message}</span>
 
@@ -68,11 +69,11 @@ export default function UserCreate(){
                         type="text"  
                         placeholder="Senha"
                         {...register("password")}
-                        className="p-3" 
+                        className="p-3 outline-0 rounded-sm" 
                        />
                     <span className="text-red-700 font-bold">{errors.password?.message}</span>                      
                                    
-                    <button type="submit" className="bg-sky-500">Cadastrar</button>
+                    <button type="submit" className="bg-sky-500 py-3 rounded-sm text-white font-bold">Cadastrar</button>
                </form>
            
         </div>

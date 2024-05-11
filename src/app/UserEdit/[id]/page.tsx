@@ -4,7 +4,7 @@
 import { api } from "@/lib/api";
 import { useForm} from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
-import {z} from "zod";
+import {string, z} from "zod";
 import { useEffect } from "react";
 import UserInterface from "@/utils/userInterface";
 import {useRouter} from "next/navigation";
@@ -50,8 +50,7 @@ export default function UserEdit({params}: UserEdit){
             //  setValue('name', initialValues.name);
             //  setValue('email', initialValues.email);
             //  setValue('profissao', initialValues.profissao);
-            //  setValue('password', initialValues.password);
-                                 
+            //  setValue('password', initialValues.password);                       
         }
        getUser()
 
@@ -76,15 +75,15 @@ export default function UserEdit({params}: UserEdit){
     return(
     <div>
 
-      <div className="w-full flex flex-col items-center justify-center mt-40">
+      <div className="w-full flex flex-col items-center justify-center mt-40 p-5">
                          
-                <form  onSubmit={handleSubmit(handleUpdate)} className="w-full max-w-2xl flex flex-col gap-4 bg-gray-600 py-5 px-10">
+                <form  onSubmit={handleSubmit(handleUpdate)} className="w-full max-w-3xl flex flex-col gap-4 bg-blue-950 py-8 px-10 rounded-md">
 
                     <input 
                     type="text" 
                     placeholder="Nome"
                     {...register("name")} 
-                    className="p-3"
+                    className="p-3 outline-0 rounded-sm"
                     /> 
                     <span className="text-red-700 font-bold">{errors.name?.message}</span>                     
                         
@@ -92,7 +91,7 @@ export default function UserEdit({params}: UserEdit){
                     type="email" 
                     placeholder="Email"
                     {...register("email")}
-                    className="p-3"
+                    className="p-3 outline-0 rounded-sm"
                     />  
                     <span className="text-red-700 font-bold">{errors.email?.message}</span>                      
                         
@@ -100,7 +99,7 @@ export default function UserEdit({params}: UserEdit){
                     type="text"  
                     placeholder="Profissao"
                     {...register("profissao")}
-                    className="p-3" 
+                    className="p-3 outline-0 rounded-sm" 
                     />                      
                     <span className="text-red-700 font-bold">{errors.profissao?.message}</span>
 
@@ -108,11 +107,11 @@ export default function UserEdit({params}: UserEdit){
                     type="text"  
                     placeholder="Senha"
                     {...register("password")}
-                    className="p-3" 
+                    className="p-3 outline-0 rounded-sm" 
                     />
                     <span className="text-red-700 font-bold">{errors.password?.message}</span>                      
                                     
-                    <button type="submit" className="bg-sky-500">Atualizar</button>
+                    <button type="submit" className="bg-sky-500 py-3 rounded-sm text-white font-bold">Atualizar</button>
               </form>
              
            

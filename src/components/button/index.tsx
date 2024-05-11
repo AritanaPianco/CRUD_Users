@@ -20,7 +20,7 @@ export default function Button({id}: ButtonProps){
     }
     
     return(
-        <button className="bg-gray-800 text-white font-bold p-3" onClick={() => handleDelete(id)}>
+        <button className="bg-red-500 text-white font-bold py-1 px-3 rounded-md ml-2" onClick={() => handleDelete(id)}>
             Remover
         </button>
     )
