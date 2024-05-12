@@ -22,11 +22,11 @@ export async function POST(request: Request){
    const {name, email, profissao, password} = await request.json()
 
    try {
-     const res = await knex('users').insert({
-           name: name,
-           email: email,
-           profissao: profissao,
-           password: password
+       await knex('users').insert({
+           name,
+           email,
+           profissao,
+           password
        })   
 
      return NextResponse.json({ message: "Usuário cadastrado com sucesso!" })
@@ -46,7 +46,7 @@ export async function PUT(request: Request){
      try {
         const { name, email, profissao, password } = await request.json();
          
-         const res = await knex('users').where({ id: userId }).update(
+          await knex('users').where({ id: userId }).update(
               {
                 name,
                 email,
@@ -69,8 +69,7 @@ export async function DELETE(request: Request){
     const userId = searchParams.get("id")
     
      try {  
-        const res = await knex('users').where('id', userId).del()
-
+        await knex('users').where('id', userId).del()
         return NextResponse.json({message: "Usuário deletado com sucesso"})
         
      } catch (error) {

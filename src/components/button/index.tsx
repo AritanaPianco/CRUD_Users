@@ -15,7 +15,7 @@ export default function Button({id}: ButtonProps){
        
         if(res.status == 200){
             navigate.refresh();
-            navigate.replace('/');    
+            navigate.replace('/',{ scroll: true });    
         }
     }
     

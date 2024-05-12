@@ -1,6 +1,4 @@
 
-
-
 interface UserInterface{
       id: Number,
       name:  string,

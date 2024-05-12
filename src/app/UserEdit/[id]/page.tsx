@@ -32,7 +32,7 @@ export default function UserEdit({params}: UserEdit){
     useEffect(() => {
         async function getUser(){
              const res = await api.get("/api/users");
-             const users:UserInterface[] = (res.data);             
+             const users:UserInterface[] = res.data;             
              const userTarget = users.filter((item) => item.id == userId)
              
              if(userTarget.length <= 0){
@@ -67,7 +67,7 @@ export default function UserEdit({params}: UserEdit){
 
         if(userUpdated.status == 200){
             navigate.refresh();
-            navigate.replace('/');
+            navigate.replace('/', {scroll: true});
         }   
     }
 
