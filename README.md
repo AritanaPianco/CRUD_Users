@@ -1,73 +1,99 @@
 
-## CRUD Sistemas de Usuários
+# CRUD de Sistema de Usuários
 
-Primeiro, instale as dependências:
+Este projeto é um sistema CRUD para gerenciamento de usuários, desenvolvido com Next.js, Typescript e MySQL. Ele permite listar, adicionar, atualizar e deletar usuários através de uma API.
+
+## Pré-requisitos
+
+- Node.js (v18.17.0 ou superior)
+- Next.js (v14.2.3)
+
+## Configuração Inicial
+
+Antes de iniciar o projeto, instale as dependências necessárias:
 
 ```bash
 npm install
-
 ```
-Depois, rode o programa com o comando:
+
+## Execução do Projeto
+
+Para rodar o projeto localmente e acessar no navegador, utilize o comando:
 
 ```bash
 npm run dev
-
 ```
- o programa é executado na porta 3000
 
-As modificações ocorrem em `app/page.tsx`. A pagina atualiza ao fazer modificações no arquivo.
+O sistema estará disponível em `http://localhost:3000`.
 
+## Rodando Migrations
 
-### Tecnologias utilizadas
+Para configurar o banco de dados, siga os passos abaixo:
 
-- Nextjs
-- Typescript
-- Tailwind
-- axios
-- react
-- react-hook-form
-- mysql
+1. Instale o Knex globalmente e a biblioteca dotenv:
+   
+   ```bash
+   npm install -g knex
+   npm install dotenv
+   ```
 
+2. Execute as migrations:
 
+   ```bash
+   npx knex migrate:latest
+   ```
 
-## Endpoints da Api
+## Estrutura de Arquivos
 
-### GET / api/users
-Esse endpoint é responsável por listar todas os usuarios
-#### Parametros
-Nenhum
-#### Respostas
-##### Status: 200
-Caso essa resposta aconteca voçe  recebera a listagem de todas os usuarios
+- As modificações principais podem ser feitas no arquivo `app/page.tsx`. Mudanças neste arquivo são refletidas automaticamente no navegador.
 
-### POST / api/users
-Esse endpoint é responsável por cadastrar um novo usuário
-#### Parametros
-- name
-- email
-- password
-- profissao
-#### Respostas
-##### Status: 200
-Caso essa resposta aconteca, o usuario foi cadastrado
+## Tecnologias Utilizadas
 
-### PUT / api/users?id=2
-Esse endpoint é responsável por atualizar um usuário
-#### Parametros
-- id
-- name
-- email
-- password
-- profissao
-#### Respostas
-##### Status: 200
-Caso essa resposta aconteca, o usuario foi atualizado
+- **Next.js**: Framework para aplicações React
+- **Typescript**: Superset de JavaScript com tipagem estática
+- **Tailwind CSS**: Framework CSS
+- **Axios**: Biblioteca para fazer requisições HTTP
+- **React**: Biblioteca para construção de interfaces de usuário
+- **React Hook Form**: Biblioteca para gerenciamento de formulários em React
+- **MySQL**: Sistema de gerenciamento de banco de dados
 
-### DELETE / api/users?id=2
-Esse endpoint é responsável por deletar um usuário
-#### Parametros
-- id
-#### Respostas
-##### Status: 200
-Caso essa resposta aconteca, o usuario foi deletado
+## API Endpoints
+
+### GET `/api/users`
+
+Lista todos os usuários.
+
+- **Parâmetros**: Nenhum
+- **Resposta (200)**: Retorna a listagem de todos os usuários.
+
+### POST `/api/users`
+
+Cadastra um novo usuário.
+
+- **Parâmetros**:
+  - `name`: Nome do usuário
+  - `email`: Email do usuário
+  - `password`: Senha do usuário
+  - `profissao`: Profissão do usuário
+- **Resposta (200)**: Usuário cadastrado com sucesso.
+
+### PUT `/api/users?id=2`
+
+Atualiza um usuário existente.
+
+- **Parâmetros**:
+  - `id`: ID do usuário
+  - `name`: Nome do usuário
+  - `email`: Email do usuário
+  - `password`: Senha do usuário
+  - `profissao`: Profissão do usuário
+- **Resposta (200)**: Usuário atualizado com sucesso.
+
+### DELETE `/api/users?id=2`
+
+Deleta um usuário.
+
+- **Parâmetros**:
+  - `id`: ID do usuário
+- **Resposta (200)**: Usuário deletado com sucesso.
 
