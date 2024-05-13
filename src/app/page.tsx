@@ -1,19 +1,26 @@
+"use client"
 
 import { api } from "@/lib/api";
 import UserInterface from "@/utils/userInterface";
 import Link from "next/link";
 import Button from "@/components/button";
+import { useEffect, useState } from "react";
 
 
-async function getUsers(){
-   const res = await api.get("/api/users")
-   return res.data;
-}
-    
-export default async function Home() {
-   const users: UserInterface[] = await getUsers();
-         
+export default function Home() {
+    const [users, setUsers] = useState<UserInterface[]>([])
    
+
+   useEffect(() => {
+         async function getUsers(){
+            const res = await api.get("/api/users")
+            setUsers(res.data);
+         }
+
+         getUsers()
+         
+   },[])
+
    return (
     <div className="w-full flex flex-col items-center justify-center mt-40 p-5">
         <table className="w-full max-w-4xl outline">
@@ -45,3 +52,4 @@ export default async function Home() {
 
   );
 }
+  
