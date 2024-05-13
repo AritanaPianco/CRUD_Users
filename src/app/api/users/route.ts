@@ -1,13 +1,15 @@
-import knex from "@/app/database/connection";
-
+// import knex from "@/app/database/connection";
 import { NextResponse } from "next/server";
+const knexFile = require("../../../../knexfile"); 
+import knex from "knex";
 
+const knexScheme = knex(knexFile)
 
 
 export async function GET(request: Request){
 
     try {
-        const users = await knex.select().table('users');
+       const users = await knexScheme.select().table('users');
         return NextResponse.json(users)
     } catch (error) {
         return NextResponse.json({ error: "Erro ao pegar usuarios" }, { status: 400 })
@@ -22,7 +24,7 @@ export async function POST(request: Request){
    const {name, email, profissao, password} = await request.json()
 
    try {
-       await knex('users').insert({
+       await knexScheme('users').insert({
            name,
            email,
            profissao,
@@ -46,7 +48,7 @@ export async function PUT(request: Request){
      try {
         const { name, email, profissao, password } = await request.json();
          
-          await knex('users').where({ id: userId }).update(
+          await knexScheme('users').where({ id: userId }).update(
               {
                 name,
                 email,
@@ -69,7 +71,7 @@ export async function DELETE(request: Request){
     const userId = searchParams.get("id")
     
      try {  
-        await knex('users').where('id', userId).del()
+        await knexScheme('users').where('id', userId).del()
         return NextResponse.json({message: "Usuário deletado com sucesso"})
         
      } catch (error) {
