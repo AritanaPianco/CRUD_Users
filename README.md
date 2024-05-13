@@ -7,6 +7,7 @@ Este projeto é um sistema CRUD para gerenciamento de usuários, desenvolvido co
 
 - Node.js (v18.17.0 ou superior)
 - Next.js (v14.2.3)
+- React (v18)
 
 ## Configuração Inicial
 
