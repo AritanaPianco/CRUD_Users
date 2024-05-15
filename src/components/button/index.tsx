@@ -12,11 +12,12 @@ export default function Button({id}: ButtonProps){
 
     async function handleDelete(userId: Number){
         const res = await api.delete(`/api/users/?id=${userId}`); 
-       
+        
         if(res.status == 200){
-            navigate.refresh();
-            navigate.replace('/',{ scroll: true });    
+           navigate.refresh();
+           navigate.replace('/', { scroll: true }); 
         }
+            
     }
     
     return(
