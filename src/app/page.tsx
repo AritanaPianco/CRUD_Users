@@ -5,12 +5,12 @@ import UserInterface from "@/utils/userInterface";
 import Link from "next/link";
 import Button from "@/components/button";
 import { useEffect, useState } from "react";
-import {useRouter} from "next/navigation"
+
 
 
 export default function Home() {
     const [users, setUsers] = useState<UserInterface[]>([])
-    const navigate = useRouter()   
+    
    
 
    useEffect(() => {
@@ -24,15 +24,7 @@ export default function Home() {
    },[users])
 
 
-   async function handleDelete(userId: Number){
-      const res = await api.delete(`/api/users/?id=${userId}`); 
-      
-      if(res.status == 200){
-         navigate.refresh();
-         navigate.replace('/', { scroll: true }); 
-      }
-          
-   }
+
 
    return (
     <div className="w-full flex flex-col items-center justify-center mt-40 p-5">
@@ -54,11 +46,8 @@ export default function Home() {
                       <td>{user.profissao}</td>
                       
                       <td>
-                         <Link href={`/UserEdit/${user.id}`} className="bg-blue-500 text-white font-bold py-1 px-3 rounded-md">Editar</Link>
-                         <button className="bg-red-500 text-white font-bold py-1 px-3 rounded-md ml-2" onClick={() => handleDelete(user.id)}>
-                           Remover
-                          </button>
-                         {/* <Button id={user.id}/> */}
+                         <Link href={`/UserEdit/${user.id}`} className="bg-blue-500 text-white font-bold py-1 px-3 rounded-md">Editar</Link>    
+                         <Button id={user.id}/>
                       </td>
                    </tr>
                 ))}
